@@ -10,6 +10,9 @@ import alias from '@rollup/plugin-alias'
 // Eslint
 import eslint from 'vite-plugin-eslint'
 
+// Postcss
+import postcss from './postcss.config.js'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -18,5 +21,8 @@ export default defineConfig({
       entries: [{ find: '@', replacement: '/src' }]
     }),
     eslint()
-  ]
+  ],
+  css: {
+    postcss
+  }
 })

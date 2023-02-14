@@ -1,9 +1,9 @@
-import { Hello } from '@/components/hello'
+import { Skeleton } from './components/skeleton'
 
 const App = () => {
   return (
     <div className='app'>
-      <Hello />
+      <Skeleton />
     </div>
   )
 }
