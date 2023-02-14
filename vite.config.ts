@@ -3,9 +3,7 @@ import { defineConfig } from 'vite'
 
 // Vite React
 import react from '@vitejs/plugin-react-swc'
-
-// Alias
-import alias from '@rollup/plugin-alias'
+import * as path from 'path'
 
 // Eslint
 import eslint from 'vite-plugin-eslint'
@@ -15,14 +13,11 @@ import postcss from './postcss.config.js'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    alias({
-      entries: [{ find: '@', replacement: '/src' }]
-    }),
-    eslint()
-  ],
+  plugins: [react(), eslint()],
   css: {
     postcss
+  },
+  resolve: {
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }]
   }
 })
