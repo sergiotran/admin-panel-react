@@ -1,11 +1,21 @@
+import React from 'react'
 import { Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { PAGES } from '@/common/components/sidenav'
 import LoadingScreen from './common/components/loading-screen'
 import Sidenav from './common/components/sidenav'
 import Footer from './common/components/footer'
 
 const App = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  React.useEffect(() => {
+    if (location.pathname === '/') {
+      navigate(PAGES[0].href)
+    }
+  }, [location])
+
   return (
     <div className='app h-auto md:h-full flex flex-col md:block'>
       <Sidenav />
